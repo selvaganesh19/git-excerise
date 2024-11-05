@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div id="chatbox"></div>
+    <div id="user-input">
+        <input type="text" placeholder="Type your message here..." />
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('send-button').onclick = function() {
+            const userMessage = document.querySelector('#user-input input[type="text"]').value;
+            document.getElementById('chatbox').innerHTML += '<div class="user-message">User: ' + userMessage + '</div>';
+            document.querySelector('#user-input input[type="text"]').value = ''; // Clear input box
+
+            // Send the user message to the Flask backend
+            fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('chatbox').innerHTML += '<div class="bot-response">Bot: ' + data.response + '</div>';
+                // Scroll to the bottom of chatbox
+                document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+        };
+    </script>
+</body>
+</html>

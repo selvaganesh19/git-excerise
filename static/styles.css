@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+h1 {
+    color: #343a40; /* Dark gray color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#chatbox {
+    border: 1px solid #6c757d; /* Gray border */
+    border-radius: 10px;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto; /* Allow scrolling */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px; /* Limit the width */
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+}
+
+#user-input {
+    display: flex; /* Align input and button inline */
+    margin-top: 10px; /* Add some spacing above the input */
+    gap: 10px; /* Space between input and button */
+}
+
+#user-input input[type="text"] {
+    flex: 1; /* Allow input to take remaining space */
+    padding: 10px; /* Consistent padding */
+    border: 1px solid #6c757d; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.user-message, .bot-response {
+    padding: 10px; /* Uniform padding for messages */
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 70%; /* Limit width for messages */
+    word-wrap: break-word; /* Ensure long words break correctly */
+}
+
+.user-message {
+    background-color: #007bff; /* User message color */
+    color: white;
+    align-self: flex-end; /* Align to the right */
+}
+
+.bot-response {
+    background-color: #f1f1f1; /* Bot message color */
+    color: #333; /* Dark text */
+    align-self: flex-start; /* Align to the left */
+}
